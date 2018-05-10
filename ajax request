@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script type="text/javascript">
+ 
+           /**
+             * Функция для отправки формы средствами Ajax
+             * @author Дизайн студия ox2.ru
+             **/
+       function AjaxFormRequest(url, resul_id) {
+             jQuery.ajax({
+                    url:     url, //Адрес подгружаемой страницы
+                    type:     "POST", //Тип запроса
+                    dataType: "html", //Тип данных
+                    data: jQuery("#forma_paese").serialize(), 
+                    success: function(response) { //Если все нормально
+                    document.getElementById(resul_id).innerHTML = response;
+                	},
+                	error: function(response) { //Если ошибка
+               		 document.getElementById(resul_id).innerHTML = "Ошибка при отправке формы";
+                	}
+             });             
+        }
+ 
+</script>
+<title></title>
+</head>
+
+<body>
+<form id="forma_paese" method="post" action="">
+  <button type="button" title="" onclick="AjaxFormRequest('v_xls.php', 'v_xls_result')">.xls</button>
+</form>
+
+<script type="text/javascript" src="jQuery.js"></script>
+</html>
